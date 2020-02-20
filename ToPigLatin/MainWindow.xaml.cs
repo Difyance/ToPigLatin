@@ -31,7 +31,7 @@ namespace ToPigLatin
 		public string outputText;
 
 		private static readonly Regex VowelRegex = new Regex(@"(?<begin>^|\s+)(?<vowel>a|e|i|o|u|yt|xr)(?<rest>\w+)", RegexOptions.Compiled);
-		private static readonly Regex ConsonantRegex = new Regex(@"(?<begin>^|\s+)(?<consonant>ch|cr|fl|gr|thr|th|sch|sh|yt|\w?qu|[^aeiou]|\w)(?<rest>\w+)", RegexOptions.Compiled);
+		private static readonly Regex ConsonantRegex = new Regex(@"(?<begin>^|\s+)(?<consonant>ch|chr|cr|fl|fr|gr|thr|th|sch|sh|sl|sm|sn|sp|st|str|tr|yt|\w?qu|[^aeiou]|\w)(?<rest>\w+)", RegexOptions.Compiled);
 
 		private const string VowelReplacement = "${begin}${vowel}${rest}yay";
 		private const string ConsonantReplacement = "${begin}${rest}${consonant}ay";
@@ -42,6 +42,18 @@ namespace ToPigLatin
 
 			Snackbar = MainSnackbar;
 			SnackbarMessageQueue = MainSnackbar.MessageQueue;
+
+			// Load text file if it exists
+			string importText = "start";
+			string shakespeareFile = $"{Environment.CurrentDirectory}\\Resources\\thesonnets.txt";
+			if (File.Exists(shakespeareFile))
+			{
+				using (StreamReader s = new StreamReader(shakespeareFile))
+				{
+					importText = s.ReadToEnd();
+				}
+			}
+			txtInput.Text = importText;
 		}
 
 		private void btnTranslate_Click(object sender, RoutedEventArgs e)
@@ -84,6 +96,7 @@ namespace ToPigLatin
 		private void btnClear_Click(object sender, RoutedEventArgs e)
 		{
 			txtInput.Clear();
+			txtOutput.Clear();
 		}
 
 		private void btnExport_Click(object sender, RoutedEventArgs e)
