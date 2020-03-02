@@ -5,6 +5,7 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:sys="clr-namespace:System;assembly=mscorlib"
 		xmlns:local="clr-namespace:ToPigLatin"
+		xmlns:views="clr-namespace:ToPigLatin.Views"
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 		TextElement.Foreground="{DynamicResource MaterialDesignBody}"
 		TextElement.FontWeight="Regular"
@@ -14,41 +15,11 @@
 		Background="{DynamicResource MaterialDesignPaper}"
 		FontFamily="{DynamicResource MaterialDesignFont}"
 		mc:Ignorable="d"
-		Title="English To Pig Latin Converter" Height="500" Width="800">
-	<Grid>
-		<materialDesign:Card Padding="32" Margin="16">
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
-				</Grid.RowDefinitions>
+		Title="To Pig Latin" Height="600" Width="850">
 
-				<TextBlock x:Name="Title" Grid.Row="0"  Style="{DynamicResource MaterialDesignHeadline6TextBlock}" TextAlignment="Center" FontSize="20" FontWeight="Bold">Convert English Text to Pig Latin</TextBlock>
-				
-				<TextBlock Grid.Row="1" FontSize="16" FontWeight="Bold">English</TextBlock>
-				<TextBox x:Name="txtInput" Grid.Row="2" TextWrapping="Wrap" MinWidth="280" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="100" Margin="10 0 10 5"
-						 Padding="0 -15 0 0" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"></TextBox>
-				<Grid Grid.Row="3" Margin="0 0 0 10">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition />
-						<ColumnDefinition />
-					</Grid.ColumnDefinitions>
-
-					<Button x:Name="btnTranslate" Grid.Column="0" Style="{StaticResource MaterialDesignRaisedButton}" HorizontalAlignment="Right" Margin="0 0 10 0" Width="100" Click="btnTranslate_Click">Translate</Button>
-					<Button x:Name="btnClear" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedDarkButton}" HorizontalAlignment="Left" Margin="10 0 0 0" Width="100" Click="btnClear_Click">Clear</Button>
-				</Grid>
-				
-				<TextBlock Grid.Row="4" FontSize="16" FontWeight="Bold">Ig-pay Atin-lay</TextBlock>
-				<TextBox x:Name="txtOutput" Grid.Row="5" TextWrapping="Wrap" MinWidth="280" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="100" Margin="10 0 10 5" 
-						 Padding="0 -25 0 0" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" IsReadOnly="True"></TextBox>
-				<Button x:Name="btnExport" Grid.Row="6" Grid.Column="0" Style="{StaticResource MaterialDesignRaisedLightButton}" HorizontalAlignment="Center" Margin="0 0 10 0" Width="150" Click="btnExport_Click">Export Translation</Button>				
-			</Grid>
-		</materialDesign:Card>
-		<materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="MainSnackbar" Grid.Row="0" />
-	</Grid>
+	<materialDesign:DialogHost Identifier="RootDialog">
+		<Grid>
+			<views:TranslationView/>
+		</Grid>
+	</materialDesign:DialogHost>
 </Window>
