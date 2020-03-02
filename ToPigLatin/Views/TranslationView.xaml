@@ -65,8 +65,9 @@
 				<Button x:Name="btnClearOutput" Grid.Row="3" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedLightButton}" HorizontalAlignment="Center" Width="100" Content="Clear" 
 					Command="{Binding ClearOutputCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
 
-				<Button x:Name="btnTranslate" Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignRaisedButton}" HorizontalAlignment="Center" Width="100" Margin="10 0 0 0" 
-						Content="Translate" Command="{Binding TranslateCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
+				<Button x:Name="btnTranslate" Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignRaisedButton}" HorizontalAlignment="Center" Width="150" Height="45" Margin="10 0 0 0" 
+						Content="TRANSLATE" FontSize="18"
+						Command="{Binding TranslateCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
 				<materialDesign:Card UniformCornerRadius="50" Padding="4" Height="35" Width="35" Grid.Row="2" Grid.ColumnSpan="2"
 									 Visibility="{Binding Path=TranslationModel.Working, Converter={StaticResource BooleanToVisibilityConverter}}">
 					<ProgressBar  Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" Height="25" Width="25"  />
